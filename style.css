@@ -4,3 +4,72 @@
   box-sizing: border-box;
   margin: 0;
 }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: skyblue;
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.logo {
+  color: darkcyan;
+  width: 100vw;
+  position: absolute;
+  top: 1px;
+  padding: 20px;
+}
+
+form .userInput,
+form button {
+  padding: 9px;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  border: 1px solid gray;
+}
+
+.section-1 {
+  background-color: aliceblue;
+  width: inherit;
+  height: fit-content;
+  padding: 30px calc(100vw / 5);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section-2 {
+  background-color: rgba(240, 248, 255, 0.685);
+  border-radius: 5px;
+  padding: 30px;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-2 .navButton {
+  background-color: aliceblue;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.section-2 .weatherCards {
+  display: flex;
+}
+
+.section-2 .weatherCards .card {
+  padding: 20px;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
