@@ -11,9 +11,26 @@ const getFullWeatherData = async (searchTerm) => {
   return weatherData;
 };
 
-const getCleanData = async () => {
+const getCleanData = async (searchTerm) => {
   let data = await getFullWeatherData(searchTerm);
   console.log(data);
-  return data.days;
+  return data;
 };
-getCleanData();
+
+const displayUI = async (searchTerm) => {
+  let data = await getCleanData(searchTerm);
+  let cityName = document.querySelector(".cityName");
+  let weatherDescription = document.querySelector(".weatherDescription");
+
+  cityName.textContent = data.resolvedAddress;
+  weatherDescription.textContent = data.description;
+};
+
+const searchButton = document.querySelector(".searchButton");
+const userInput = document.querySelector(".userInput");
+
+searchButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  //   console.log(userInput.value);
+  displayUI(userInput.value);
+});
