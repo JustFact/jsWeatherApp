@@ -11,19 +11,26 @@ const getFullWeatherData = async (searchTerm) => {
   return weatherData;
 };
 
-const getCleanData = async (searchTerm) => {
-  let data = await getFullWeatherData(searchTerm);
-  console.log(data);
-  return data;
-};
-
-const displayUI = async (searchTerm) => {
-  let data = await getCleanData(searchTerm);
+const displayUI = (searchTerm) => {
+  let data = getFullWeatherData(searchTerm);
   let cityName = document.querySelector(".cityName");
   let weatherDescription = document.querySelector(".weatherDescription");
 
-  cityName.textContent = data.resolvedAddress;
-  weatherDescription.textContent = data.description;
+  data
+    .then((weatherData) => {
+      return {
+        address: weatherData.resolvedAddress,
+        weatherDescription: weatherData.description,
+        icon: weatherData.currentConditions.icon,
+        feelslike: weatherData.currentConditions.feelslike,
+        humidity: weatherData.currentConditions.humidity,
+        tempmax: weatherData.days[0].tempmax,
+        tempmin: weatherData.days[0].tempmin,
+      };
+    })
+    .then((cleanData) => {
+      //use data here
+    });
 };
 
 const searchButton = document.querySelector(".searchButton");
@@ -31,6 +38,5 @@ const userInput = document.querySelector(".userInput");
 
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
-  //   console.log(userInput.value);
   displayUI(userInput.value);
 });
