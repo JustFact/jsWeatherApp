@@ -19,8 +19,12 @@ const displayUI = (searchTerm) => {
   let data = getFullWeatherData(searchTerm);
   let cityName = document.querySelector(".cityName");
   let weatherDescription = document.querySelector(".currentWeatherDescription");
-  let weatherIcon = document.querySelector(".currentWeather > .icon");
-  let weatherFeelsLike = document.querySelector(".currentWeather > .feelsLike");
+  let weatherIcon = document.querySelector(
+    ".currentWeather .currentWeather-main > .icon"
+  );
+  let weatherFeelsLike = document.querySelector(
+    ".currentWeather .currentWeather-main > .feelsLike"
+  );
   let weatherTempMax = document.querySelector(".currentWeather > .tempMax");
   let weatherTempMin = document.querySelector(".currentWeather > .tempMin");
   let weatherHumidity = document.querySelector(".currentWeather > .humidity");
@@ -45,9 +49,9 @@ const displayUI = (searchTerm) => {
       cityName.textContent = cleanData.address;
       weatherDescription.textContent = cleanData.weatherDescription;
       weatherIcon.textContent = cleanData.icon;
-      weatherFeelsLike.textContent = `Temp: ${cleanData.feelslike}`;
-      weatherTempMax.textContent = `Max: ${cleanData.tempmax}`;
-      weatherTempMin.textContent = `Min: ${cleanData.tempmin}`;
+      weatherFeelsLike.textContent = `${cleanData.feelslike}\u00B0`;
+      weatherTempMax.textContent = `Max: ${cleanData.tempmax}\u00B0`;
+      weatherTempMin.textContent = `Min: ${cleanData.tempmin}\u00B0`;
       weatherHumidity.textContent = `Hum: ${cleanData.humidity}%`;
     })
     .catch((error) => {

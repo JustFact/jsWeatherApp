@@ -45,6 +45,43 @@ form button {
   padding: 30px calc(100vw / 5);
   margin-top: 20px;
   margin-bottom: 20px;
+
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.section-1 .cityName {
+  font-size: 2em;
+}
+
+.section-1 .currentWeatherDescription {
+  grid-row: 2;
+  width: 25rem;
+  font-weight: 100;
+  margin-top: 10px;
+}
+
+.section-1 .currentWeather {
+  grid-row: 1/-1;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.currentWeather .currentWeather-main {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 20px;
+}
+
+.currentWeather-main .feelsLike {
+  font-size: 40px;
 }
 
 .section-2 {
