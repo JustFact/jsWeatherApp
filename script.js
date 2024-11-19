@@ -4,11 +4,15 @@ let unitGroupMetric = "metric";
 let searchTerm = "paris";
 
 const getFullWeatherData = async (searchTerm) => {
-  let response = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchTerm}?unitGroup=${unitGroupMetric}&key=${VisualCrossingKey}&contentType=json`
-  );
-  let weatherData = await response.json();
-  return weatherData;
+  try {
+    let response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchTerm}?unitGroup=${unitGroupMetric}&key=${VisualCrossingKey}&contentType=json`
+    );
+    let weatherData = await response.json();
+    return weatherData;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const displayUI = (searchTerm) => {
@@ -45,6 +49,9 @@ const displayUI = (searchTerm) => {
       weatherTempMax.textContent = `Max: ${cleanData.tempmax}`;
       weatherTempMin.textContent = `Min: ${cleanData.tempmin}`;
       weatherHumidity.textContent = `Hum: ${cleanData.humidity}%`;
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
 
