@@ -74,14 +74,29 @@ form button {
   border-radius: 10px;
 }
 
+.currentWeather .icon {
+  width: 30px;
+  display: block;
+  margin-bottom: 2px;
+}
+
 .currentWeather .currentWeather-main {
   grid-column: 1/-1;
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 10px;
+}
+
+.currentWeather-main .icon {
+  width: 70px;
 }
 
 .currentWeather-main .feelsLike {
   font-size: 40px;
+}
+
+.currentWeather-main svg {
+  width: 70px;
 }
 
 .section-2 {
