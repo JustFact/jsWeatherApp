@@ -18,7 +18,7 @@ body {
 }
 
 .logo {
-  color: darkcyan;
+  color: white;
   align-self: flex-start;
   padding: 10px 25px;
 }
@@ -128,8 +128,16 @@ form button {
   width: max-content;
   background-color: aliceblue;
   border-radius: 5px;
+
+  display: grid;
+  justify-items: center;
+}
+
+.card .weatherCondition {
+  width: 40px;
+  height: 40px;
 }
 
 .card .icon {
-  width: 40px;
+  width: 20px;
 }
