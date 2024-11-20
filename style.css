@@ -23,6 +23,12 @@ body {
   padding: 10px 25px;
 }
 
+form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 form .userInput,
 form button {
   padding: 9px;
@@ -32,6 +38,19 @@ form button {
 
 form button {
   border: 1px solid gray;
+}
+
+.loading {
+  display: block;
+  visibility: hidden;
+  background-color: green;
+  outline: 10px solid green;
+  padding: 0px;
+  border-radius: 20px;
+  margin-left: 10px;
+  width: 1px;
+  height: 1px;
+  transition: outline 0.3s;
 }
 
 .section-1 {

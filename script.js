@@ -2,6 +2,8 @@ let VisualCrossingKey = "CWZHZ6SDF9GGUUVCFUZ8WDHNJ";
 let unitGroupImperial = "us";
 let unitGroupMetric = "metric";
 let searchTerm = "paris";
+let isLoading = false;
+let loaderInterval;
 
 let svgHumidity =
   '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>water</title><path d="M12,20A6,6 0 0,1 6,14C6,10 12,3.25 12,3.25C12,3.25 18,10 18,14A6,6 0 0,1 12,20Z" /></svg>';
@@ -68,7 +70,6 @@ const setUpcomingWeatherCards = (days) => {
 
 const displayUI = (searchTerm) => {
   let cityName = document.querySelector(".cityName");
-  cityName.textContent = "Loading...";
   let weatherDescription = document.querySelector(".currentWeatherDescription");
   let weatherIcon = document.querySelector(
     ".currentWeather .currentWeather-main > .icon"
@@ -119,13 +120,32 @@ const displayUI = (searchTerm) => {
     })
     .catch((error) => {
       console.log(error);
+    })
+    .finally(() => {
+      clearInterval(loaderInterval);
+      loader.style.visibility = "hidden";
     });
 };
 
 const searchButton = document.querySelector(".searchButton");
 const userInput = document.querySelector(".userInput");
+const loader = document.querySelector(".loading");
+
+const animateLoader = () => {
+  loader.style.visibility = "visible";
+  loaderInterval = setInterval(() => {
+    if (isLoading) {
+      loader.style.outline = "1px solid red";
+      isLoading = false;
+    } else {
+      loader.style.outline = "10px solid green";
+      isLoading = true;
+    }
+  }, 150);
+};
 
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
+  animateLoader();
   displayUI(userInput.value);
 });
