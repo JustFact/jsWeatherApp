@@ -6,8 +6,6 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
   background-color: skyblue;
   color: black;
 
@@ -22,7 +20,7 @@ body {
 .logo {
   color: darkcyan;
   align-self: flex-start;
-  padding: 20px;
+  padding: 10px 25px;
 }
 
 form .userInput,
@@ -38,11 +36,10 @@ form button {
 
 .section-1 {
   background-color: aliceblue;
-  width: inherit;
+  width: 100%;
   height: fit-content;
   padding: 30px calc(100vw / 5);
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 
   display: grid;
   grid-template-rows: 1fr 4fr;
@@ -109,18 +106,30 @@ form button {
 
 .section-2 .navButton {
   background-color: aliceblue;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 5px 9px;
+  border-radius: 20px;
   margin: 5px;
+}
+
+.section-2 .weatherCardsContainer {
+  overflow: hidden;
 }
 
 .section-2 .weatherCards {
   display: flex;
-  width: inherit;
+  gap: 18px;
+  /* overflow: hidden; */
+  /* width: fit-content; */
 }
 
 .section-2 .weatherCards .card {
+  flex: 0 0 max-content;
   padding: 20px;
+  width: max-content;
   background-color: aliceblue;
   border-radius: 5px;
+}
+
+.card .icon {
+  width: 40px;
 }
