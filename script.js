@@ -1,9 +1,18 @@
 let VisualCrossingKey = "CWZHZ6SDF9GGUUVCFUZ8WDHNJ";
 let unitGroupImperial = "us";
 let unitGroupMetric = "metric";
-let searchTerm = "paris";
+let searchTerm;
 let isLoading = false;
 let loaderInterval;
+
+fetch("https://api.ipregistry.co/?key=tryout")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (payload) {
+    animateLoader();
+    displayUI(payload.location.city);
+  });
 
 let svgHumidity =
   '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>water</title><path d="M12,20A6,6 0 0,1 6,14C6,10 12,3.25 12,3.25C12,3.25 18,10 18,14A6,6 0 0,1 12,20Z" /></svg>';
@@ -106,7 +115,6 @@ const displayUI = (searchTerm) => {
     })
     .then((cleanData) => {
       //use data here
-      console.log(cleanData);
       cityName.textContent = cleanData.address;
       weatherDescription.textContent = cleanData.weatherDescription;
       getWeatherConditionSVG(cleanData.icon).then((res) => {
