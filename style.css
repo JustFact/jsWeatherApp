@@ -14,16 +14,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .logo {
   color: darkcyan;
-  width: 100vw;
-  position: absolute;
-  top: 1px;
+  align-self: flex-start;
   padding: 20px;
 }
 
@@ -118,6 +116,7 @@ form button {
 
 .section-2 .weatherCards {
   display: flex;
+  width: inherit;
 }
 
 .section-2 .weatherCards .card {
