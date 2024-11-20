@@ -31,6 +31,10 @@ const getFullWeatherData = async (searchTerm) => {
   }
 };
 
+const setUpcomingWeatherCards = (days) => {
+  //populate cards here
+};
+
 const displayUI = (searchTerm) => {
   let cityName = document.querySelector(".cityName");
   cityName.textContent = "Loading...";
@@ -59,10 +63,18 @@ const displayUI = (searchTerm) => {
         humidity: Math.round(weatherData.currentConditions.humidity),
         tempmax: weatherData.days[0].tempmax,
         tempmin: weatherData.days[0].tempmin,
+        days: weatherData.days.map((day) => ({
+          datetime: day.datetime,
+          tempmax: day.tempmax,
+          tempmin: day.tempmin,
+          feelslike: day.feelslike,
+          icon: day.icon,
+        })),
       };
     })
     .then((cleanData) => {
       //use data here
+      console.log(cleanData);
       cityName.textContent = cleanData.address;
       weatherDescription.textContent = cleanData.weatherDescription;
       getWeatherConditionSVG(cleanData.icon).then((res) => {
@@ -72,6 +84,7 @@ const displayUI = (searchTerm) => {
       weatherTempMax.innerHTML = svgTempHigh + `${cleanData.tempmax}\u00B0`;
       weatherTempMin.innerHTML = svgTempLow + `${cleanData.tempmin}\u00B0`;
       weatherHumidity.innerHTML = svgHumidity + `${cleanData.humidity}%`;
+      setUpcomingWeatherCards(cleanData.days);
     })
     .catch((error) => {
       console.log(error);
