@@ -63,9 +63,9 @@ const setUpcomingWeatherCards = (days) => {
     let icon = document.createElement("img");
     icon.classList.add("weatherCondition");
 
-    tempHigh.innerHTML = svgTempHigh + ` ${day.tempmax}`;
-    tempLow.innerHTML = svgTempLow + ` ${day.tempmin}`;
-    tempFeelslike.innerHTML = svgTempFeelLike + ` ${day.feelslike}`;
+    tempHigh.innerHTML = svgTempHigh + ` ${day.tempmax}\u00B0`;
+    tempLow.innerHTML = svgTempLow + ` ${day.tempmin}\u00B0`;
+    tempFeelslike.innerHTML = svgTempFeelLike + ` ${day.feelslike}\u00B0`;
     datetime.textContent = `${day.datetime}`;
     getWeatherConditionSVG(day.icon).then((res) => {
       icon.src = res.url;
